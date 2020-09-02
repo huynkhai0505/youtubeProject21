@@ -17,9 +17,14 @@ app.listen(PORT, () => {
 mongoose.connect(process.env.MONGODB_CONNECTION_STRING, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useCreateIndex: true,
 }, (err) => {
     if(err) throw err;
     console.log('MongoDB Connection Establish');
 });
+
+//set up route
+
+app.use("/users", require("./routes/userRouter"));
 
 
